@@ -1,0 +1,6 @@
+INCLUDE(CPack)
+cmake_minimum_required(VERSION 2.0)
+project(SecurityCamera)
+find_package( OpenCV REQUIRED)
+add_executable( SecurityCamera main.cpp)
+target_link_libraries( SecurityCamera ${OpenCV_LIBS})
