@@ -35,7 +35,7 @@ int main(int argc, char** argv){
 		cv::threshold( diff, thresh, 30, 255,THRESH_BINARY);
 		cv::blur(thresh,iblur, Size(10,10), Point(-1,-1));
 		cv::threshold( iblur, finalt, 2,255,THRESH_BINARY);
-		auto isum = cv::sum(finalt)[0]/(bim.rows*bim.cols);
+		double isum = cv::sum(finalt)[0]/(bim.rows*bim.cols);
         time_t start_recording;
 		if(isum > 6){
 			if(!recording){
@@ -52,9 +52,9 @@ int main(int argc, char** argv){
 		}
 		else{
 			cout << "no motion.. recording stopped"<<endl;
-            if(recoding){
+            if(recording){
                 //Give 2 seconds recording grace
-                time_t now= time(null)
+                time_t now= time(NULL);
                 double diff_time = difftime(now,start_recording);
                 if(diff_time>2.0){
                     recording = false;
